@@ -4,9 +4,7 @@ from typing import List
 
 app = FastAPI()
 
-# --------------------------
-# Models
-# --------------------------
+
 class PostCreate(BaseModel):
     user_id: int
     title: str
@@ -15,15 +13,11 @@ class PostCreate(BaseModel):
 class Post(PostCreate):
     id: int
 
-# --------------------------
-# In-memory storage
-# --------------------------
-posts = []
-next_post_id = 1  # This will increment with each new post
 
-# --------------------------
-# Routes
-# --------------------------
+posts = []
+next_post_id = 1  
+
+
 
 @app.get("/api/posts", response_model=List[Post])
 def get_all_posts():
